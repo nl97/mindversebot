@@ -1,24 +1,23 @@
 import { INodeParams, INodeCredential } from '../src/Interface'
 
-class ZapierNLAApi implements INodeCredential {
+class AssemblyAIApi implements INodeCredential {
     label: string
     name: string
     version: number
-    description: string
     inputs: INodeParams[]
 
     constructor() {
-        this.label = 'Zapier NLA API'
-        this.name = 'zapierNLAApi'
+        this.label = 'AssemblyAI API'
+        this.name = 'assemblyAIApi'
         this.version = 1.0
         this.inputs = [
             {
-                label: 'Zapier NLA Api Key',
-                name: 'zapierNLAApiKey',
+                label: 'AssemblyAI Api Key',
+                name: 'assemblyAIApiKey',
                 type: 'password'
             }
         ]
     }
 }
 
-module.exports = { credClass: ZapierNLAApi }
+module.exports = { credClass: AssemblyAIApi }
