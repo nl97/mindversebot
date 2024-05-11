@@ -5,7 +5,7 @@ import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackba
 
 // material-ui
 import { Typography, Box, Button, FormControl, ListItem, ListItemAvatar, ListItemText, MenuItem, Select } from '@mui/material'
-import { IconX } from '@tabler/icons'
+import { IconX } from '@tabler/icons-react'
 
 // Project import
 import CredentialInputHandler from '@/views/canvas/CredentialInputHandler'
@@ -113,7 +113,9 @@ const SpeechToText = ({ dialogProps }) => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save Speech To Text Configuration: ${error.response.data.message}`,
+                message: `Failed to save Speech To Text Configuration: ${
+                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                }`,
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -187,7 +189,7 @@ const SpeechToText = ({ dialogProps }) => {
                     Providers
                 </Typography>
                 <FormControl fullWidth>
-                    <Select value={selectedProvider} onChange={handleProviderChange}>
+                    <Select size='small' value={selectedProvider} onChange={handleProviderChange}>
                         <MenuItem value='none'>None</MenuItem>
                         <MenuItem value='openAIWhisper'>OpenAI Whisper</MenuItem>
                         <MenuItem value='assemblyAiTranscribe'>Assembly AI</MenuItem>
@@ -196,7 +198,7 @@ const SpeechToText = ({ dialogProps }) => {
             </Box>
             {selectedProvider !== 'none' && (
                 <>
-                    <ListItem style={{ padding: 0, margin: 0 }} alignItems='center'>
+                    <ListItem sx={{ mt: 3 }} alignItems='center'>
                         <ListItemAvatar>
                             <div
                                 style={{

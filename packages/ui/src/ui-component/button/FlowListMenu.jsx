@@ -17,7 +17,7 @@ import VpnLockOutlinedIcon from '@mui/icons-material/VpnLockOutlined'
 import MicNoneOutlinedIcon from '@mui/icons-material/MicNoneOutlined'
 import Button from '@mui/material/Button'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import { IconX } from '@tabler/icons'
+import { IconX } from '@tabler/icons-react'
 
 import chatflowsApi from '@/api/chatflows'
 
@@ -155,7 +155,7 @@ export default function FlowListMenu({ chatflow, setError, updateFlowsApi }) {
         } catch (error) {
             setError(error)
             enqueueSnackbar({
-                message: error.response.data.message,
+                message: typeof error.response.data === 'object' ? error.response.data.message : error.response.data,
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -194,7 +194,7 @@ export default function FlowListMenu({ chatflow, setError, updateFlowsApi }) {
         } catch (error) {
             setError(error)
             enqueueSnackbar({
-                message: error.response.data.message,
+                message: typeof error.response.data === 'object' ? error.response.data.message : error.response.data,
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -226,7 +226,7 @@ export default function FlowListMenu({ chatflow, setError, updateFlowsApi }) {
             } catch (error) {
                 setError(error)
                 enqueueSnackbar({
-                    message: error.response.data.message,
+                    message: typeof error.response.data === 'object' ? error.response.data.message : error.response.data,
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
